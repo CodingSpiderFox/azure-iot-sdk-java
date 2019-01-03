@@ -143,16 +143,16 @@ public class SendMessagesCommon extends MethodNameLoggingIntegrationTest
                     new Object[][]
                             {
                                     //sas token device client
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), HTTPS), HTTPS, device, SAS, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), MQTT), MQTT, device, SAS, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), MQTT_WS), MQTT_WS, device, SAS, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), AMQPS), AMQPS, device, SAS, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), AMQPS_WS), AMQPS_WS, device, SAS, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), HTTPS), HTTPS, device, SAS, "DeviceClient", device.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), MQTT), MQTT, device, SAS, "DeviceClient", device.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), MQTT_WS), MQTT_WS, device, SAS, "DeviceClient", device.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), AMQPS), AMQPS, device, SAS, "DeviceClient", device.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, device), AMQPS_WS), AMQPS_WS, device, SAS, "DeviceClient", device.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
 
                                     //x509 device client
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509), HTTPS, publicKeyCert, false, privateKey, false), HTTPS, deviceX509, SELF_SIGNED, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509), MQTT, publicKeyCert, false, privateKey, false), MQTT, deviceX509, SELF_SIGNED, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509), AMQPS, publicKeyCert, false, privateKey, false), AMQPS, deviceX509, SELF_SIGNED, "DeviceClient", publicKeyCert, privateKey, x509Thumbprint}
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509), HTTPS, publicKeyCert, false, privateKey, false), HTTPS, deviceX509, SELF_SIGNED, "DeviceClient", deviceX509.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509), MQTT, publicKeyCert, false, privateKey, false), MQTT, deviceX509, SELF_SIGNED, "DeviceClient", deviceX509.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new DeviceClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509), AMQPS, publicKeyCert, false, privateKey, false), AMQPS, deviceX509, SELF_SIGNED, "DeviceClient", deviceX509.getDeviceId(), publicKeyCert, privateKey, x509Thumbprint}
                             }
             );
         }
@@ -162,14 +162,14 @@ public class SendMessagesCommon extends MethodNameLoggingIntegrationTest
                     new Object[][]
                             {
                                     //sas token module client
-                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), MQTT), MQTT, module, SAS, "ModuleClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), MQTT_WS), MQTT_WS, module, SAS, "ModuleClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), AMQPS), AMQPS, module, SAS, "ModuleClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), AMQPS_WS), AMQPS_WS, module, SAS, "ModuleClient", publicKeyCert, privateKey, x509Thumbprint},
+                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), MQTT), MQTT, module, SAS, "ModuleClient", module.getId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), MQTT_WS), MQTT_WS, module, SAS, "ModuleClient", module.getId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), AMQPS), AMQPS, module, SAS, "ModuleClient", module.getId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, device, module), AMQPS_WS), AMQPS_WS, module, SAS, "ModuleClient", module.getId(), publicKeyCert, privateKey, x509Thumbprint},
 
                                     //x509 module client
-                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509, moduleX509), MQTT, publicKeyCert, false, privateKey, false), MQTT, moduleX509, SELF_SIGNED, "ModuleClient", publicKeyCert, privateKey, x509Thumbprint},
-                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509, moduleX509), AMQPS, publicKeyCert, false, privateKey, false), AMQPS, moduleX509, SELF_SIGNED, "ModuleClient", publicKeyCert, privateKey, x509Thumbprint}
+                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509, moduleX509), MQTT, publicKeyCert, false, privateKey, false), MQTT, moduleX509, SELF_SIGNED, "ModuleClient", moduleX509.getId(), publicKeyCert, privateKey, x509Thumbprint},
+                                    {new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509, moduleX509), AMQPS, publicKeyCert, false, privateKey, false), AMQPS, moduleX509, SELF_SIGNED, "ModuleClient", moduleX509.getId(), publicKeyCert, privateKey, x509Thumbprint}
                     }
             );
         }

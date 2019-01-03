@@ -30,13 +30,13 @@ public class SendMessagesErrInjDeviceJVMRunner extends SendMessagesErrInjTests
 {
     static Collection<BaseDevice> identities;
 
-    public SendMessagesErrInjDeviceJVMRunner(InternalClient client, IotHubClientProtocol protocol, BaseDevice identity, AuthenticationType authenticationType, String clientType, String publicKeyCert, String privateKey, String x509Thumbprint)
+    public SendMessagesErrInjDeviceJVMRunner(InternalClient client, IotHubClientProtocol protocol, BaseDevice identity, AuthenticationType authenticationType, String clientType, String id, String publicKeyCert, String privateKey, String x509Thumbprint)
     {
         super(client, protocol, identity, authenticationType, clientType, publicKeyCert, privateKey, x509Thumbprint);
     }
 
     //This function is run before even the @BeforeClass annotation, so it is used as the @BeforeClass method
-    @Parameterized.Parameters(name = "{1} with {3} auth using {4}")
+    @Parameterized.Parameters(name = "{1} with {3} auth using {4}_{5}")
     public static Collection inputs() throws IOException, IotHubException, GeneralSecurityException, URISyntaxException, ModuleClientException, InterruptedException
     {
         iotHubConnectionString = Tools.retrieveEnvironmentVariableValue(TestConstants.IOT_HUB_CONNECTION_STRING_ENV_VAR_NAME);
