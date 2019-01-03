@@ -336,6 +336,8 @@ public class SendMessagesErrInjTests extends SendMessagesCommon
         String uuid = UUID.randomUUID().toString();
         String deviceId = "java-device-client-e2e-test-send-messages".concat("-" + uuid);
 
+        System.out.println("Device id used in " + Thread.currentThread().getStackTrace()[2].getMethodName() + " " + deviceId);
+
         Device target;
         DeviceClient dc;
         if (this.testInstance.authenticationType == SELF_SIGNED)
